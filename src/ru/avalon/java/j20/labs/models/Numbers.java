@@ -27,15 +27,15 @@ public final class Numbers {
      * @param values массив значений
      * @return среднее арифметическое с точностью до типа {@code double}.
      */
-    public static  <T extends Number> double avg(T[] values) {
+    public static  <T extends Number & Comparable<T>> double avg(T[] values) {
         return (double) sum(values) / values.length;
     }
 
-    private <T extends Number> boolean isNullOrEmptyOrIncomparable(T[] list){
+    private <T extends Number & Comparable> boolean isNullOrEmptyOrIncomparable(T[] list){
         if (list == null)
             return true;
         else
-            return list.length == 0 || !(list instanceof Comparable[]);
+            return list.length == 0;
     }
 
 
@@ -48,7 +48,7 @@ public final class Numbers {
      * @param b второе значение
      * @return большее из двух значений
      */
-    public static <T extends Comparable<T>> T max(T a, T b) {
+    public static <T extends Number & Comparable<T>> T max(T a, T b) {
         return a.compareTo(b) > 0 ? a : b;
     }
 
@@ -58,7 +58,7 @@ public final class Numbers {
      * @param values массив значений
      * @return максимальное значение массива
      */
-    public static <T extends Comparable<T>> T max(T[] values) {
+    public static <T extends Number & Comparable<T>> T max(T[] values) {
         T result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = max(result, values[i]);
@@ -83,7 +83,7 @@ public final class Numbers {
      * @param values массив значений
      * @return минимальное значение массива
      */
-    public static <T extends Comparable<T>> T min(T[] values) {
+    public static <T extends Number & Comparable<T>> T min(T[] values) {
         T result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = min(result, values[i]);

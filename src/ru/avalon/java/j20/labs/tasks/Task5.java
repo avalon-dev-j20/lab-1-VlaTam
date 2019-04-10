@@ -3,8 +3,7 @@ package ru.avalon.java.j20.labs.tasks;
 import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Задание №5.
@@ -23,11 +22,11 @@ public class Task5 implements Task {
      */
     @Override
     public void run() {
-        //final int[] array = arrayFactory.getInstance(20);
+        final Integer[] array = arrayFactory.getInstance(20);
 
-        List<Integer> list = null;
+        List<Integer> list = new ArrayList<>(Arrays.asList(array));
 
-        Set<Integer> set = null;
+        Set<Integer> set = new HashSet<>(Arrays.asList(array));
 
         /**
          * TODO(Студент): Выполните задание №5
@@ -40,5 +39,6 @@ public class Task5 implements Task {
          * 3. С использованием отладчика проверьте корректность
          *    выполнения задания.
          */
+
     }
 }
