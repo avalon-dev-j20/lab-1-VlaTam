@@ -19,6 +19,8 @@ public class Task1 implements Task {
      */
     private final RandomArrayFactory arrayFactory = new RandomArrayFactory();
 
+
+
     /**
      * {@inheritDoc}
      */
@@ -28,6 +30,8 @@ public class Task1 implements Task {
         int min = Numbers.min(array);
         int max = Numbers.max(array);
         double avg = Numbers.avg(array);
+
+
         /*
          * TODO(Студент): Выполните задание №1
          *

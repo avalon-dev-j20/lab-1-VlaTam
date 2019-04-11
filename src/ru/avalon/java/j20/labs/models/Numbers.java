@@ -14,9 +14,9 @@ public final class Numbers {
      * @param values массив чисел
      * @return сумма элементов массива
      */
-    public static <T extends Number> Number sum(T[] values) {
+    public static <T extends Number> double sum(T[] values) {
         double sum = 0.;
-        for (Number value : values) sum += value.doubleValue();
+            for (Number value : values) sum += value.doubleValue();
         return sum;
     }
 
@@ -28,17 +28,8 @@ public final class Numbers {
      * @return среднее арифметическое с точностью до типа {@code double}.
      */
     public static  <T extends Number & Comparable<T>> double avg(T[] values) {
-        return (double) sum(values) / values.length;
+        return sum(values) / values.length;
     }
-
-    private <T extends Number & Comparable> boolean isNullOrEmptyOrIncomparable(T[] list){
-        if (list == null)
-            return true;
-        else
-            return list.length == 0;
-    }
-
-
 
 
     /**
@@ -73,7 +64,7 @@ public final class Numbers {
      * @param b второе значение
      * @return меньшее из дух значений
      */
-    public static <T extends Comparable<T>> T min(T a, T b) {
+    public static <T extends Number & Comparable<T>> T min(T a, T b) {
         return a.compareTo(b) < 0 ? a : b;
     }
 
@@ -90,4 +81,6 @@ public final class Numbers {
         }
         return result;
     }
+
+
 }
