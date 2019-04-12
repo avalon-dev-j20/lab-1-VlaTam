@@ -1,6 +1,8 @@
 package ru.avalon.java.j20.labs.models;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Модель получения последовательности чисел Фибоначчи.
@@ -18,12 +20,24 @@ import java.util.Iterator;
  */
 public class Fibonacci implements Iterable<Integer> {
 
+    private static List<Integer> fibonacciDigits = new ArrayList<>();
+
+    public Fibonacci(int amountOfDigits){
+        fibonacciDigits.add(0);
+        fibonacciDigits.add(1);
+
+        for (int i = 1; i < amountOfDigits - 1; i++){
+            fibonacciDigits.add(fibonacciDigits.get(i) + fibonacciDigits.get(i - 1));
+        }
+    }
+
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
     private static class FibonacciIterator implements Iterator<Integer> {
 
+        private int currentPosition = 0;
         /**
          * Определяет, есть ли следующее значение
          * последовательности чисел Фибоначчи.
@@ -34,7 +48,7 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return currentPosition < fibonacciDigits.size();
         }
 
         /**
@@ -45,7 +59,7 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return fibonacciDigits.get(currentPosition++);
         }
     }
 
@@ -58,5 +72,10 @@ public class Fibonacci implements Iterable<Integer> {
     @Override
     public Iterator<Integer> iterator() {
         return new FibonacciIterator();
+    }
+
+    @Override
+    public String toString() {
+        return fibonacciDigits.toString();
     }
 }
